@@ -1,0 +1,38 @@
+.movies-list {
+  list-style: outside none;
+  margin: 0 0 20px 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.movie-item {
+  float: left;
+  padding: 10px;
+  width: 100%;
+}
+
+.movie-card {
+  background: #f6f7f7;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+
+.movie-title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.movie-type {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+@media only screen and (min-width: 650px) {
+  .movie-item {
+    width: 50%;
+  }
+}
