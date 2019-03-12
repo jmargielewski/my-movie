@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/actions';
 import MovieList from '../../components/MovieList/MovieList';
+import Spinner from '../../components/Spinner/Spinner';
+import * as actions from '../../redux/actions';
 import './searchPage.css';
 
 class SearchPage extends Component {
@@ -43,7 +44,7 @@ class SearchPage extends Component {
         <hr />
         {movies && (
           <div>
-            {loading && <p>loading...</p>}
+            {loading && <Spinner />}
             {error && <p>{error}</p>}
             {Search && (
               <MovieList movies={Search} onClick={this.onMovieClick} />

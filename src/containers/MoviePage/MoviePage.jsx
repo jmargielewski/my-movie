@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Movie from '../../components/Movie/Movie';
+import Spinner from '../../components/Spinner/Spinner';
 import * as actions from '../../redux/actions';
 import './moviePage.css';
 
@@ -13,7 +14,7 @@ class MoviePage extends Component {
     const { movie } = this.props;
     return (
       <div className="movie-card">
-        {movie ? <Movie movie={movie} /> : 'Loading...'}
+        {movie ? <Movie movie={movie} /> : <Spinner />}
       </div>
     );
   }
