@@ -15,6 +15,10 @@ class Main extends Component {
 
   componentDidMount() {}
 
+  onMovieClick = (movieId) => {
+    this.props.history.push(`/${movieId}`);
+  };
+
   onChange = (e) => {
     this.setState({ value: e.target.value });
     // this.props.fetchMovies(e.target.value);
@@ -44,7 +48,9 @@ class Main extends Component {
             <div>
               {loading && <p>loading...</p>}
               {error && <p>{error}</p>}
-              {Search && <MovieList movies={Search} />}
+              {Search && (
+                <MovieList movies={Search} onClick={this.onMovieClick} />
+              )}
             </div>
           )}
         </div>
