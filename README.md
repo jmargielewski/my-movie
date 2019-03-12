@@ -1,4 +1,6 @@
-# my-movie
+# My-movie
+
+**In order to fetch data from API put Your API key into src/api/OMDbApi.js => API_KEY**
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
