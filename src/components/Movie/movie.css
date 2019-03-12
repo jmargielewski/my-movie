@@ -1,0 +1,95 @@
+.movie {
+  display: flex;
+}
+
+.poster {
+  width: 200px;
+  height: 285px;
+  background: #ebebeb;
+}
+
+.movie-details {
+  padding: 0 20px;
+}
+
+.movie-details .movie-title {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.movie-time {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 20px 0;
+}
+
+.movie-plot {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.movie-button {
+  padding: 15px 0 25px;
+}
+
+.movie-button a {
+  width: 170px;
+  height: 32px;
+  color: #333;
+  background: #ffc404;
+  font-size: 13px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 32px;
+  display: inline-block;
+}
+
+.movie-button a:hover {
+  background: #ffd651;
+}
+
+.vertical-table thead,
+.vertical-table tbody {
+  display: inline-block;
+}
+
+.vertical-table th {
+  text-align: right;
+  color: #7f7f7f;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.vertical-table td {
+  text-align: left;
+  padding-left: 20px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 670px) {
+  .movie {
+    flex-direction: column;
+  }
+
+  .movie-details {
+    padding: 0;
+  }
+
+  .movie-details .movie-title {
+    margin-top: 20px;
+  }
+
+  .vertical-table td {
+    padding-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .vertical-table th,
+  .vertical-table td {
+    font-size: 12px;
+  }
+}

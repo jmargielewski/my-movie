@@ -1,13 +1,14 @@
 .search-field {
   padding: 10px 0;
 }
+
 .search-input {
   width: 125px;
-  height: 40px;
+  height: 35px;
   padding-left: 5px;
   max-width: 100%;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 12px;
   border-radius: 3px;
   border: 1px solid #9d9da3;
   margin-left: 10px;
