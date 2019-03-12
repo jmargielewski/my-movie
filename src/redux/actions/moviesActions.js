@@ -1,11 +1,11 @@
-import axios from 'axios';
 import {
-  API_KEY,
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILURE,
   FETCH_MOVIE_BY_ID_SUCCESS,
 } from './types';
+import OMDbApi, { API_KEY } from '../../api/OMDbApi';
+import serialize from '../../utils/serialize';
 
 const fetchMovieByIdSuccess = response => ({
   type: FETCH_MOVIE_BY_ID_SUCCESS,
@@ -25,9 +25,7 @@ const fetchMoviesFailure = err => ({
 export const fetchMovies = data => async (dispatch) => {
   dispatch({ type: FETCH_MOVIES });
   try {
-    const response = await axios.get(
-      `http://www.omdbapi.com/?s=${data}&apikey=${API_KEY}`,
-    );
+    const response = await OMDbApi.get(`/${serialize(data)}&apikey=${API_KEY}`);
     if (response.status === 200) {
       dispatch(fetchMoviesSuccess(response.data));
     } else {
@@ -41,9 +39,7 @@ export const fetchMovies = data => async (dispatch) => {
 export const fetchMovieById = id => async (dispatch) => {
   dispatch({ type: FETCH_MOVIES });
   try {
-    const response = await axios.get(
-      `http://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`,
-    );
+    const response = await OMDbApi.get(`/?i=${id}&apikey=${API_KEY}`);
     if (response.status === 200) {
       dispatch(fetchMovieByIdSuccess(response.data));
     } else {

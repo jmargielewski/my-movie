@@ -10,6 +10,11 @@
   width: 100%;
 }
 
+.movie-item:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
 .movie-title {
   font-size: 14px;
   font-weight: 800;

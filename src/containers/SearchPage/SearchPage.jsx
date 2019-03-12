@@ -1,56 +1,70 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MovieList from '../../components/MovieList/MovieList';
+import Search from '../../components/Search/Search';
 import Spinner from '../../components/Spinner/Spinner';
+import MovieList from '../../components/MovieList/MovieList';
 import * as actions from '../../redux/actions';
+import searchingConfiguration from './searchingConfiguration';
 import './searchPage.css';
 
 class SearchPage extends Component {
   constructor(props) {
     super(props);
 
+    this.filters = {
+      ...Object.assign(
+        {},
+        ...Object.keys(searchingConfiguration).map(key => ({ [key]: '' })),
+      ),
+    };
+
     this.state = {
-      value: '',
+      ...this.filters,
     };
   }
 
   componentDidMount() {}
 
   onMovieClick = (movieId) => {
-    this.props.history.push(`/${movieId}`);
+    const { history } = this.props;
+    history.push(`/${movieId}`);
   };
 
-  onChange = (e) => {
-    this.setState({ value: e.target.value });
-    // this.props.fetchMovies(e.target.value);
+  onChange = (e, filter) => {
+    this.setState({ [filter]: e.target.value }, () => this.fetchMovies());
+  };
+
+  fetchMovies = () => {
+    const { fetchMovies } = this.props;
+    const data = Object.assign({}, this.state);
+
+    Object.keys(data).forEach((key) => {
+      if (!data[key]) delete data[key];
+    });
+
+    fetchMovies(data);
   };
 
   render() {
-    const {
-      movies,
-      loading,
-      movies: { Error: error, Search },
-    } = this.props;
+    const { movies, loading } = this.props;
 
-    console.log(movies);
     return (
       <div>
-        <input
-          type="text"
-          value={this.state.value}
+        <Search
           onChange={this.onChange}
-          placeholder="write title"
+          values={this.state}
+          filters={searchingConfiguration}
         />
         <hr />
         {movies && (
           <div>
-            {loading && <Spinner />}
-            {error && <p>{error}</p>}
-            {Search && (
-              <MovieList movies={Search} onClick={this.onMovieClick} />
+            {movies.Error && <p>{movies.Error}</p>}
+            {movies.Search && (
+              <MovieList movies={movies.Search} onClick={this.onMovieClick} />
             )}
           </div>
         )}
+        {loading && <Spinner />}
       </div>
     );
   }
