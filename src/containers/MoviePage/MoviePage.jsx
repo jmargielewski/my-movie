@@ -13,7 +13,7 @@ class MoviePage extends Component {
   render() {
     const { movie } = this.props;
     return (
-      <div className="movie-card">
+      <div className="card">
         {movie ? <Movie movie={movie} /> : <Spinner />}
       </div>
     );

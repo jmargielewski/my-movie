@@ -1,0 +1,27 @@
+.search-field {
+  padding: 10px 0;
+}
+.search-input {
+  width: 125px;
+  height: 40px;
+  padding-left: 5px;
+  max-width: 100%;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #9d9da3;
+  margin-left: 10px;
+}
+
+.search-input:focus {
+  outline-color: #00cdbc;
+}
+
+.search-label {
+  text-transform: capitalize;
+}
+
+.search-tip {
+  font-size: 10px;
+  padding-left: 40px;
+}

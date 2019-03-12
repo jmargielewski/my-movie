@@ -1,20 +1,23 @@
 export default {
   s: {
     type: 'text',
-    placeholder: 'title',
+    field: 'title',
     parameter: 's',
     required: true,
+    tip: '*required',
   },
   type: {
     type: 'text',
-    placeholder: 'type',
+    field: 'type',
     parameter: 'type',
     required: false,
+    tip: '*only: movie, series, episode',
   },
   y: {
     type: 'number',
-    placeholder: 'year',
+    field: 'year',
     parameter: 'y',
     required: false,
+    tip: '*max 2019',
   },
 };

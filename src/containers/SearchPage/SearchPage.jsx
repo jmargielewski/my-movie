@@ -42,7 +42,7 @@ class SearchPage extends Component {
       if (!data[key]) delete data[key];
     });
 
-    fetchMovies(data);
+    // fetchMovies(data);
   };
 
   render() {

@@ -1,15 +1,26 @@
 .main-layout-body {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px;
 }
 
-.movie-card {
+.card {
   background: #f6f7f7;
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
-  /* display: flex;
+}
+
+.card-darken {
+  background: #ebebeb;
+  display: flex;
   justify-content: space-between;
-  align-items: center; */
+  align-items: center;
+}
+
+@media only screen and (max-width: 650px) {
+  .card-darken {
+    flex-direction: column;
+    align-items: self-start;
+  }
 }
