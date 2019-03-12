@@ -29,7 +29,7 @@ export const fetchMovies = data => async (dispatch) => {
     if (response.status === 200) {
       dispatch(fetchMoviesSuccess(response.data));
     } else {
-      console.error('ERROR');
+      console.error('ERROR', response.status);
     }
   } catch (err) {
     dispatch(fetchMoviesFailure(err));
@@ -43,7 +43,7 @@ export const fetchMovieById = id => async (dispatch) => {
     if (response.status === 200) {
       dispatch(fetchMovieByIdSuccess(response.data));
     } else {
-      console.error('ERROR');
+      console.error('ERROR', response.status);
     }
   } catch (err) {
     dispatch(fetchMoviesFailure(err));

@@ -7,7 +7,8 @@ import './moviePage.css';
 
 class MoviePage extends Component {
   componentDidMount() {
-    // this.props.fetchMovieById(this.props.match.params.movieId);
+    const { fetchMovieById, match } = this.props;
+    fetchMovieById(match.params.movieId);
   }
 
   render() {
@@ -20,8 +21,8 @@ class MoviePage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  movie: state.movies.movieById,
+const mapStateToProps = ({ movies }) => ({
+  movie: movies.movieById,
 });
 
 export default connect(

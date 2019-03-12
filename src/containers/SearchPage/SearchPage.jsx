@@ -23,8 +23,6 @@ class SearchPage extends Component {
     };
   }
 
-  componentDidMount() {}
-
   onMovieClick = (movieId) => {
     const { history } = this.props;
     history.push(`/${movieId}`);
@@ -42,7 +40,7 @@ class SearchPage extends Component {
       if (!data[key]) delete data[key];
     });
 
-    // fetchMovies(data);
+    fetchMovies(data);
   };
 
   render() {
@@ -70,9 +68,9 @@ class SearchPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  movies: state.movies.moviesBySearch,
-  loading: state.movies.loading,
+const mapStateToProps = ({ movies }) => ({
+  movies: movies.moviesBySearch,
+  loading: movies.loading,
 });
 
 export default connect(
