@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import './moviePage.css';
 
-class Movie extends PureComponent {
+class MoviePage extends PureComponent {
   render() {
     const { movie } = this.props;
     return (
@@ -22,4 +23,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(Movie);
+export default connect(mapStateToProps)(MoviePage);

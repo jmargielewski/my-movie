@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
-import MovieList from '../MovieList/MovieList';
-import './main.css';
+import MovieList from '../../components/MovieList/MovieList';
+import './searchPage.css';
 
-class Main extends Component {
+class SearchPage extends Component {
   constructor(props) {
     super(props);
 
@@ -33,27 +33,23 @@ class Main extends Component {
 
     console.log(movies);
     return (
-      <div className="site-content">
+      <div>
         <input
           type="text"
           value={this.state.value}
           onChange={this.onChange}
           placeholder="write title"
         />
-        <div>
-          <h2>list below</h2>
-
-          <hr />
-          {movies && (
-            <div>
-              {loading && <p>loading...</p>}
-              {error && <p>{error}</p>}
-              {Search && (
-                <MovieList movies={Search} onClick={this.onMovieClick} />
-              )}
-            </div>
-          )}
-        </div>
+        <hr />
+        {movies && (
+          <div>
+            {loading && <p>loading...</p>}
+            {error && <p>{error}</p>}
+            {Search && (
+              <MovieList movies={Search} onClick={this.onMovieClick} />
+            )}
+          </div>
+        )}
       </div>
     );
   }
@@ -67,4 +63,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   actions,
-)(Main);
+)(SearchPage);

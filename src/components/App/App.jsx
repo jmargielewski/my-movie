@@ -1,16 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from '../Header/Header';
-import Movie from '../Movie/Movie';
-import Main from '../Main/Main';
+import MainLayout from '../Layout/MainLayout';
+import SearchPage from '../../containers/SearchPage/SearchPage';
+import MoviePage from '../../containers/MoviePage/MoviePage';
 import './app.css';
+
+const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => (
+      <Layout>
+        <Component {...props} />
+      </Layout>
+    )}
+  />
+);
 
 const App = () => (
   <Router>
     <div className="app">
-      <Header />
-      <Route exact path="/" component={Main} />
-      <Route path="/:movieId" component={Movie} />
+      <AppRoute exact path="/" layout={MainLayout} component={SearchPage} />
+      <AppRoute path="/:movieId" layout={MainLayout} component={MoviePage} />
     </div>
   </Router>
 );
