@@ -56,7 +56,7 @@ class SearchPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies.data,
+  movies: state.movies.moviesBySearch,
   loading: state.movies.loading,
 });
 

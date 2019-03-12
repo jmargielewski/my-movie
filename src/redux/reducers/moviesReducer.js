@@ -2,11 +2,45 @@ import {
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILURE,
+  FETCH_MOVIE_BY_ID_SUCCESS,
 } from '../actions/types';
 
 export const INITIAL_STATE = {
   loading: false,
-  data: {
+  movieById: {
+    Actors: 'Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang',
+    Awards: 'Won 3 Oscars. Another 85 wins & 128 nominations.',
+    BoxOffice: '$749,700,000',
+    Country: 'UK, USA',
+    DVD: '22 Apr 2010',
+    Director: 'James Cameron',
+    Genre: 'Action, Adventure, Fantasy, Sci-Fi',
+    Language: 'English, Spanish',
+    Metascore: '83',
+    Plot:
+      'A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.',
+    Poster:
+      'https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg',
+    Production: '20th Century Fox',
+    Rated: 'PG-13',
+    Ratings: (3)[
+      ({ Source: 'Internet Movie Database', Value: '7.8/10' },
+      { Source: 'Rotten Tomatoes', Value: '82%' },
+      { Source: 'Metacritic', Value: '83/100' })
+    ],
+    Released: '18 Dec 2009',
+    Response: 'True',
+    Runtime: '162 min',
+    Title: 'Avatar',
+    Type: 'movie',
+    Website: 'http://www.avatarmovie.com/',
+    Writer: 'James Cameron',
+    Year: '2009',
+    imdbID: 'tt0499549',
+    imdbRating: '7.8',
+    imdbVotes: '1,028,378',
+  },
+  moviesBySearch: {
     Search: [
       {
         Title: 'Avatar',
@@ -83,17 +117,19 @@ export const INITIAL_STATE = {
   errorMessage: '',
 };
 
-const movieReducer = (state = INITIAL_STATE, action) => {
+const moviesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_MOVIES:
       return { ...state, loading: true };
     case FETCH_MOVIES_SUCCESS:
-      return { ...state, loading: false, data: action.payload };
+      return { ...state, loading: false, moviesBySearch: action.payload };
     case FETCH_MOVIES_FAILURE:
       return { ...state, loading: false, errorMessage: action.payload };
+    case FETCH_MOVIE_BY_ID_SUCCESS:
+      return { ...state, loading: false, movieById: action.payload };
     default:
       return state;
   }
 };
 
-export default movieReducer;
+export default moviesReducer;

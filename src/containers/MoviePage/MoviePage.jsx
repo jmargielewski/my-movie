@@ -1,26 +1,29 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Movie from '../../components/Movie/Movie';
+import * as actions from '../../redux/actions';
 import './moviePage.css';
 
-class MoviePage extends PureComponent {
+class MoviePage extends Component {
+  componentDidMount() {
+    // this.props.fetchMovieById(this.props.match.params.movieId);
+  }
+
   render() {
     const { movie } = this.props;
     return (
       <div className="movie-card">
-        <h2 className="movie-title">{movie.Title}</h2>
-        <p className="movie-type">{movie.Type}</p>
-        <p className="movie-type">{movie.Year}</p>
-        <img src={movie.Poster} alt={movie.Title} />
+        {movie ? <Movie movie={movie} /> : 'Loading...'}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.match.params.movieId;
-  return {
-    movie: state.movies.data.Search.find(({ imdbID }) => imdbID === id),
-  };
-};
+const mapStateToProps = state => ({
+  movie: state.movies.movieById,
+});
 
-export default connect(mapStateToProps)(MoviePage);
+export default connect(
+  mapStateToProps,
+  actions,
+)(MoviePage);
