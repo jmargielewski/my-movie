@@ -2,7 +2,7 @@
 
 Get information about movie.
 
-[Live](https://rent-room-2.herokuapp.com)
+[Live](https://my-movie-info.herokuapp.com/)
 
 [API](http://www.omdbapi.com)
 
