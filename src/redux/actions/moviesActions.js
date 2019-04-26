@@ -4,7 +4,7 @@ import {
   FETCH_MOVIES_FAILURE,
   FETCH_MOVIE_BY_ID_SUCCESS,
 } from './types';
-import OMDbApi, { API_KEY } from '../../api/OMDbApi';
+import OMDbApi from '../../api/OMDbApi';
 import serialize from '../../utils/serialize';
 
 const fetchMovieByIdSuccess = response => ({
@@ -25,7 +25,9 @@ const fetchMoviesFailure = err => ({
 export const fetchMovies = data => async (dispatch) => {
   dispatch({ type: FETCH_MOVIES });
   try {
-    const response = await OMDbApi.get(`/${serialize(data)}&apikey=${API_KEY}`);
+    const response = await OMDbApi.get(
+      `/${serialize(data)}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
+    );
     if (response.status === 200) {
       dispatch(fetchMoviesSuccess(response.data));
     } else {
@@ -39,7 +41,9 @@ export const fetchMovies = data => async (dispatch) => {
 export const fetchMovieById = id => async (dispatch) => {
   dispatch({ type: FETCH_MOVIES });
   try {
-    const response = await OMDbApi.get(`/?i=${id}&apikey=${API_KEY}`);
+    const response = await OMDbApi.get(
+      `/?i=${id}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
+    );
     if (response.status === 200) {
       dispatch(fetchMovieByIdSuccess(response.data));
     } else {
