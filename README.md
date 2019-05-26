@@ -12,3 +12,4 @@ Get information about movie.
 - Redux
 - CSS
 - Jest / Enzyme
+- Hostign- Heroku
