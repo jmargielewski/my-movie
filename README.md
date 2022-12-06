@@ -2,8 +2,6 @@
 
 Get information about movie.
 
-[Live](https://my-movie-info.herokuapp.com/)
-
 [API](http://www.omdbapi.com)
 
 ### Technologies and libraries
